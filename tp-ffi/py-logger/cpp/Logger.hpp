@@ -6,7 +6,7 @@
 
 enum class Level { Info, Warning, Error };
 
-using Item = std::tuple<Level, std::string>;
+using Item = std::tuple<Level, std::string, std::string>;
 
 class Logger {
   private:
