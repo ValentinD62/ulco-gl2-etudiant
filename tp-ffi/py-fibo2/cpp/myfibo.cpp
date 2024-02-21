@@ -5,16 +5,24 @@ int fiboNaive(int n) {
     return n < 2 ? n : fiboNaive(n-1) + fiboNaive(n-2);
 }
 
-// TODO implement fiboIterative
+int fiboIterative(int n){
+    int a = 0;
+    int b = 1;
+    int c = 0;
+    for (int i = 0; i < n; i++){
+        c = a;
+        a = b;
+        b += c;
+    }
+    return a;
+}
 
 
 #include <pybind11/pybind11.h>
 
 PYBIND11_MODULE(myfibo, m) {
-
-    // TODO export fiboNaive (as fibo_naive)
-
-    // TODO export fiboIterative (as fibo_iterative)
+    m.def("fibo_naive", &fiboNaive, "Fibo Naive");
+    m.def("fibo_iterative", &fiboIterative, "Fibo Iterative");
 
 }
 
