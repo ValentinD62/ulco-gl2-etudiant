@@ -1,12 +1,13 @@
 #pragma once
 
 #include "Board.hpp"
+#include "Reportable.hpp"
 #include <fstream>
 #include <iostream>
 
-class ReportStdout{
+class ReportStdout: public Reportable{
     public:
-        void reportStdout(const Board & board) {
+        void report(const Board & board) override{
             for (const std::string & item : board.getItems())
                 std::cout << item << std::endl;
             std::cout << std::endl;
