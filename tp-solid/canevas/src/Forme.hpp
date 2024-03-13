@@ -1,9 +1,9 @@
 #pragma once
 #include <math.h>
+#include "Descriptible.hpp"
 
-class Forme {
+class Forme: public Descriptible{
     public:
-        virtual ~Forme() = default;
         virtual double aire() const = 0;
 };
 
@@ -17,7 +17,12 @@ class Disque : public Forme {
             return M_PI * (_rayon * _rayon);
         }
 
-        //const Description & to Description(){}
+        Description toDescription() const override{
+            Description desc;
+            desc["name"] = "Disque";
+            desc["rayon"] = std::to_string(_rayon);
+            return desc;
+        }
 
 };
 
@@ -32,5 +37,11 @@ class Rectangle : public Forme {
             return _largeur * _hauteur;
         }
 
-        //const Description & to Description(){}
+        Description toDescription() const override{
+            Description desc;
+            desc["name"] = "Rectangle";
+            desc["largeur"] = std::to_string(_largeur);
+            desc ["hauteur"] =  std::to_string(_hauteur);
+            return desc;
+        }
 };
