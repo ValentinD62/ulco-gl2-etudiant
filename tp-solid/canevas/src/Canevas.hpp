@@ -18,7 +18,6 @@ class Canevas {
         void exportYAML(std::ostream & os, const std::string & what) const;
 
     private:
-        double aireForme(const Forme * f) const;
         void exportFormeJSON(std::ostream & os, const Forme * f) const;
         void exportFormeYAML(std::ostream & os, const Forme * f) const;
 
