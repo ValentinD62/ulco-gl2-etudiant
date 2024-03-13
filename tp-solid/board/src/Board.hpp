@@ -24,17 +24,5 @@ class Board : public Itemable {
         virtual std::string getTitle() const override {
             return "Board";
         }
-
-        void reportStdout() {
-            for (const std::string & item : getItems())
-                std::cout << item << std::endl;
-            std::cout << std::endl;
-        }
-
-        void reportFile() {
-            for (const std::string & item : getItems())
-                _ofs << item << std::endl;
-            _ofs << std::endl;
-        }
 };
 
