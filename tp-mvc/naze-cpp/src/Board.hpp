@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <iostream>
 
 enum class Cell { Free, Wall, Goal };
 
@@ -24,7 +25,9 @@ class Board {
         Cell operator()(int i, int j) const;
 
         void tryGoLeft();
-
+        void tryGoRight();
+        void tryGoUp();
+        void tryGoDown();
         // TODO
         
 };

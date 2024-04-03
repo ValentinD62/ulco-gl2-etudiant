@@ -2,6 +2,7 @@
 
 #include <stdexcept>
 
+
 Board::Board() : Board(0, 0)
 {}
 
@@ -37,7 +38,23 @@ Cell Board::operator()(int i, int j) const {
 }
 
 void Board::tryGoLeft() {
-    _i++;
-    _j++;
-    // TODO
+    if(_board[_i][_j-1] == Cell::Free && _j-1 >= 0){
+        _j--;
+    }
+}
+
+void Board::tryGoRight() {
+    if(_board[_i][_j+1] == Cell::Free && _j+1 <= 9){
+        _j++;
+    }
+}
+void Board::tryGoUp() {
+    if(_board[_i+1][_j] == Cell::Free && _i+1 <= 9){
+        _i++;
+    }
+}
+void Board::tryGoDown() {
+    if(_board[_i-1][_j] == Cell::Free && _i-1 >= 0){
+        _i--;
+    }
 }
