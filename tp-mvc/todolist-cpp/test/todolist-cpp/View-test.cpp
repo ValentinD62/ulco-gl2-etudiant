@@ -12,6 +12,6 @@ TEST_CASE( "test view board" ) {
     Board b;
     b.addTodo("TODO");
     std::string res = printBoard(b);
-    std::string normal = "Todo:\n1. TODO\n\n Done:\n";
+    std::string normal = "Todo:\n1. TODO\n\nDone:\n";
     REQUIRE( res == normal );
 }

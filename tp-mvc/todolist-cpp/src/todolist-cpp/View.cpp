@@ -10,7 +10,7 @@ std::string printBoard(const Board& b){
     for (auto it : b._todo){
         msg = msg + showTask(it) + "\n";
     }
-    msg += "\n Done:\n";
+    msg += "\nDone:\n";
     for (auto it : b._done){
         msg = msg + showTask(it) + "\n";
     }
