@@ -9,3 +9,12 @@ TEST_CASE( "test board" ) {
     REQUIRE( it->_name == "TODO" );
 }
 
+TEST_CASE( "test board done" ) {
+    Board b;
+    b.addTodo("TODO");
+    b.addTodo("TODI");
+    b.addTodo("TODU");
+    b.toDone(2);
+    auto it = b._done.begin();
+    REQUIRE( it->_name == "TODI" );
+}

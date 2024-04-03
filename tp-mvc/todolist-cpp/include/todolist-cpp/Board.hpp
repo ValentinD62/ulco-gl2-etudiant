@@ -14,4 +14,5 @@ public:
     std::list<Task> _done;
     Board(){_nextId = 1;};
     void addTodo(std::string desc);
+    void toDone(int id);
 };

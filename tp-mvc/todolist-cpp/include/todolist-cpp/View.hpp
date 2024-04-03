@@ -3,5 +3,5 @@
 #include "Task.hpp"
 #include <iostream>
 
-void printBoard(Board b);
 std::string showTask(const Task& task);
+std::string printBoard(const Board& b);
