@@ -2,7 +2,6 @@
 
 void Board::addTodo(std::string desc){
     Task t {_nextId, desc };
-    auto it = _todo.begin();
-    _todo.insert(it, t);
+    _todo.push_back(t);
     _nextId ++;
 }
