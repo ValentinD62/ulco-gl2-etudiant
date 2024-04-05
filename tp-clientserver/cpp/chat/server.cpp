@@ -11,10 +11,12 @@ int main() {
 
     hv::WebSocketService ws;
     ws.onopen = [&net](const WebSocketChannelPtr& channel, const HttpRequestPtr& req) {
+        channel->send("Quel est votre nom ?");
         net.add(channel);
         std::cout << "client connected" << std::endl;
     };
     ws.onmessage = [&net](const WebSocketChannelPtr& channel, const std::string& msg) {
+        if channel.
         auto sendInput = [&msg](const WebSocketChannelPtr & channel) {
             channel->send(msg);
         };
