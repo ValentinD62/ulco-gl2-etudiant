@@ -11,11 +11,26 @@ Status Jeu::getStatus() const {
 
 Cell Jeu::getCell(int i, int j) const {
     // TODO
-    return Cell::Vide;
+    return _plateau[i][j];
 }
 
 std::ostream & operator<<(std::ostream & os, const Jeu & jeu) {
-    // TODO
+    for (int i = 0; i < 3; i ++){
+        for (int j = 0; j < 3; j++){
+            switch(jeu.getCell(i, j)){
+                case Cell::Vide :
+                    os << '.';
+                    break;
+                case Cell::Rouge:
+                    os << 'R';
+                    break;
+                case Cell::Vert:
+                    os << 'V';
+                    break;
+            }
+        }
+        os << std::endl;
+    }
     return os;
 }
 
@@ -25,6 +40,10 @@ bool Jeu::jouer(int i, int j) {
 }
 
 void Jeu::raz() {
-    // TODO
+    for (int i=0;  i < 3; i++){
+        for (int j=0; j < 3; j++){
+            _plateau[i][j] = Cell::Vide;
+        }
+    }
 }
 
