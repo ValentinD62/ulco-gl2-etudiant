@@ -1,4 +1,5 @@
 #include "Tictactoe.hpp"
+#include <memory>
 
 Jeu::Jeu() {
     raz();
@@ -32,19 +33,63 @@ std::ostream & operator<<(std::ostream & os, const Jeu & jeu) {
     return os;
 }
 
+void Jeu::victoire(){
+    for (int i = 0; i < 3; i++){
+        //Vérif ligne.
+        if(_plateau[i][0] == _plateau[i][1] && _plateau[i][0] == _plateau[i][2]){
+            if(_plateau[i][0] == Cell::Rouge){
+                _statut = Status::RougeGagne;
+            }
+            else if (_plateau[i][0] == Cell::Vert){
+                _statut = Status::VertGagne;
+            }
+        }
+        //Vérif colonne.
+        if(_plateau[0][i] == _plateau[1][i] && _plateau[0][i] == _plateau[2][i]){
+            if(_plateau[0][i] == Cell::Rouge){
+                _statut = Status::RougeGagne;
+            }
+            else if (_plateau[0][i] == Cell::Vert){
+                _statut = Status::VertGagne;
+            }
+        }
+    }
+    //Vérif diag 1.
+    if(_plateau[0][0] == _plateau[1][1] && _plateau[0][0] == _plateau[2][2]){
+        if(_plateau[0][0] == Cell::Rouge){
+                _statut = Status::RougeGagne;
+        }
+        else if (_plateau[0][0] == Cell::Vert){
+            _statut = Status::VertGagne;
+        }
+    }
+    //Vérif diag 2.
+    if(_plateau[0][2] == _plateau[1][1] && _plateau[0][2] == _plateau[2][0]){
+        if(_plateau[0][2] == Cell::Rouge){
+            _statut = Status::RougeGagne;
+        }
+        else if (_plateau[0][2] == Cell::Vert){
+            _statut = Status::VertGagne;
+        }
+    }
+}
+
 bool Jeu::jouer(int i, int j) {
     if(getCell(i,j) == Cell::Vide && i <= 2 && j <= 2 && i >= 0 && j >= 0){
         switch (_statut)
         {
         case Status::RougeJoue:
             _plateau[i][j] = Cell::Rouge;
+            _statut = Status::VertJoue;
             break;
         case Status::VertJoue:
             _plateau[i][j] = Cell::Vert;
+            _statut = Status::RougeJoue;
             break;
         default:
             return false;
         }
+        victoire();
         return true;
     }
     else

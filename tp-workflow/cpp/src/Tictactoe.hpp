@@ -25,6 +25,10 @@ class Jeu {
         // Retourne l'état d'une case du plateau
         Cell getCell(int i, int j) const;
 
+        //Vois si il y a une victoire.
+        void victoire();
+
+
         // Joue un coup pour le joueur courant.
         // 
         // i ligne choisie (0, 1 ou 2)

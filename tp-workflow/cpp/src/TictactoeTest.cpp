@@ -36,3 +36,25 @@ TEST_CASE("jouer plusieurs fois sur la même case"){
     REQUIRE(jeu.jouer(0, 1) == true);
     REQUIRE(jeu.jouer(0, 1) == false);
 }
+
+TEST_CASE("Victoire rouge"){
+    Jeu jeu;
+    jeu.jouer(0, 0);
+    jeu.jouer(1, 1);
+    jeu.jouer(1, 0);
+    jeu.jouer(1, 2);
+    jeu.jouer(2, 0);
+    REQUIRE(jeu.getStatus() == Status::RougeGagne);
+}
+
+TEST_CASE("Victoire verte"){
+    Jeu jeu;
+    jeu.jouer(0, 0);
+    jeu.jouer(1, 1);
+    jeu.jouer(0, 1);
+    jeu.jouer(1, 0);
+    jeu.jouer(2, 2);
+    jeu.jouer(1, 2);
+    std::cout << jeu;
+    REQUIRE(jeu.getStatus() == Status::VertGagne);
+}
