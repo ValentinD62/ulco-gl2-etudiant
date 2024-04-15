@@ -13,6 +13,7 @@ class Jeu {
     private:
         std::array<std::array<Cell, 3>, 3> _plateau;
         // TODO
+        Status _statut;
 
     public:
         // Constructeur à utiliser.
