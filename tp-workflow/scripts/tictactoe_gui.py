@@ -69,10 +69,19 @@ class Gui(Gtk.Window):
 
 
     def on_area_button_press(self, widget, event):
-        # TODO on_area_button_press
         if event.button == 1:
-            label.set_text("test ?")
-            print('TODO on_area_button_press')
+            match self.jeu.getStatus():
+                case tictactoe.Status.RougeJoue:
+                    self.label.set_text("RougeJoue")
+                case tictactoe.Status.RougeGagne:
+                    self.label.set_text("RougeGagne")
+                case tictactoe.Status.VertJoue:
+                    self.label.set_text("VertJoue")
+                case tictactoe.Status.VertGagne:
+                    self.label.set_text("VertGagne")
+                case tictactoe.Status.Egalite:
+                    self.label.set_text("Egalite")
+            print('changement etat')
             
 
     def on_button1_clicked(self, widget):

@@ -10,7 +10,13 @@ PYBIND11_MODULE(tictactoe, m) {
         .value("Vert", Cell::Vert)
         ;
 
-    // TODO Status
+    pybind11::enum_<Status>(m, "Status")
+        .value("RougeGagne", Status::RougeGagne)
+        .value("VertGagne", Status::VertGagne)
+        .value("Egalite", Status::Egalite)
+        .value("RougeJoue", Status::RougeJoue)
+        .value("VertJoue", Status::VertJoue)
+        ;
 
     pybind11::class_<Jeu>(m, "Jeu")
         .def(pybind11::init<>())
