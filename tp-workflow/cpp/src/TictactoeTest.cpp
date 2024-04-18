@@ -69,6 +69,5 @@ TEST_CASE("Egalite"){
     jeu.jouer(2, 1);
     jeu.jouer(2, 0);
     jeu.jouer(2, 2);
-    std::cout << jeu;
     REQUIRE(jeu.getStatus() == Status::Egalite);
 }
