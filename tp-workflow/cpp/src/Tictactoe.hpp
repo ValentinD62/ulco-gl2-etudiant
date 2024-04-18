@@ -8,36 +8,38 @@ enum class Status { Egalite, RougeGagne, VertGagne, RougeJoue, VertJoue };
 
 enum class Cell { Vide, Rouge, Vert };
 
-// Moteur de jeu de tictactoe.
+/// Moteur de jeu de tictactoe.
 class Jeu {
     private:
         std::array<std::array<Cell, 3>, 3> _plateau;
         Status _statut;
 
     public:
-        // Constructeur à utiliser.
+        /// \brief Constructeur à utiliser.
         Jeu();
 
-        // Retourne le status du jeu courant (Egalite, RougeGagne, VertGagne, RougeJoue, VertJoue).
+        /// \brief Retourne le status du jeu courant (Egalite, RougeGagne, VertGagne, RougeJoue, VertJoue).
         Status getStatus() const;
 
-        // Retourne l'état d'une case du plateau
+        /// \brief Retourne l'état d'une case du plateau
+        /// @param i : int (entre 0 et 2)
+        /// @param j : int (entre 0 et 2)
         Cell getCell(int i, int j) const;
 
-        //Vois si il y a une victoire.
+        /// \brief Vois si il y a une victoire.
         void victoire();
 
 
-        // Joue un coup pour le joueur courant.
-        // 
-        // i ligne choisie (0, 1 ou 2)
-        // j colonne choisie (0, 1 ou 2)
-        // 
-        // Si le coup est invalide, retourne false. Si le coup est valide,
-        // joue le coup et retourne true.
+        /// \brief Joue un coup pour le joueur courant.
+        /// 
+        /// @param i ligne choisie (0, 1 ou 2)
+        /// @param j colonne choisie (0, 1 ou 2)
+        /// 
+        /// Si le coup est invalide, retourne false. Si le coup est valide,
+        /// joue le coup et retourne true.
         bool jouer(int i, int j);
 
-        // Réinitialise le jeu.
+        /// \brief Réinitialise le jeu.
         void raz();
 };
 

@@ -1,5 +1,6 @@
 import gi
 import math
+import tictactoe
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
@@ -25,15 +26,19 @@ class Gui(Gtk.Window):
         hbox = Gtk.Box()
         vbox.pack_end(hbox, False, False, 0)
         # label
-        self.label = Gtk.Label(label="TODO")
+        self.label = Gtk.Label(label="RougeJoue")
         hbox.pack_start(self.label, True, True, 0)
-        # TODO button1
+        # button1
+        button1 = Gtk.Button(label="rejouer")
+        button1.connect("clicked", self.on_button1_clicked)
+        hbox.pack_start(button1, True, True, 0)
         # button2
         button2 = Gtk.Button(label="quitter")
         button2.connect("clicked", self.on_button2_clicked)
         hbox.pack_start(button2, True, True, 0)
 
         # TODO create game (from the C++ module)
+        self.jeu = tictactoe.Jeu()
 
     def on_draw(self, widget, context):
 
@@ -43,25 +48,37 @@ class Gui(Gtk.Window):
         height = widget.get_allocated_height()
 
         context.set_source_rgb(0, 0, 0)
-        context.rectangle(0, 0, 100, 100)
+        context.rectangle(0, 0, width, height)
         context.fill()
 
         context.set_source_rgb(0.5, 0.5, 0.5)
         context.set_line_width(3)
-        context.move_to(width, 0)
-        context.line_to(0, height)
+        context.move_to(width/3, 0)
+        context.line_to(width/3, height)
+
+        context.move_to((width/3)*2, 0)
+        context.line_to((width/3)*2, height)
+
+        context.move_to(0, (height/3))
+        context.line_to(width, (height/3))
+
+        context.move_to(0, (height/3)*2)
+        context.line_to(width, (height/3)*2)
+
         context.stroke()
 
 
     def on_area_button_press(self, widget, event):
         # TODO on_area_button_press
         if event.button == 1:
+            label.set_text("test ?")
             print('TODO on_area_button_press')
             
 
     def on_button1_clicked(self, widget):
         # TODO on_button1_clicked
-        print('TODO on_button1_clicked')
+        self.jeu.raz()
+        print('Jeu réinitialisé')
         self.drawingarea.queue_draw()
 
     def on_button2_clicked(self, widget):

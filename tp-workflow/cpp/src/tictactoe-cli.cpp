@@ -1,7 +1,8 @@
 #include "Tictactoe.hpp"
 
 using namespace std;
-
+/// @brief Permet de jouer au clavier
+/// @return void
 int main() {
     Jeu jeu;
     while (jeu.getStatus() != Status::Egalite && jeu.getStatus() != Status::RougeGagne && jeu.getStatus() != Status::VertGagne){

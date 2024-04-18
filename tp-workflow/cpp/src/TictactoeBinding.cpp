@@ -15,7 +15,10 @@ PYBIND11_MODULE(tictactoe, m) {
     pybind11::class_<Jeu>(m, "Jeu")
         .def(pybind11::init<>())
         .def("getStatus", &Jeu::getStatus)
-        // TODO ...
+        .def("getCell", &Jeu::getCell)
+        .def("victoire", &Jeu::victoire)
+        .def("jouer", &Jeu::jouer)
+        .def("raz", &Jeu::raz)
         ;
 
 }
